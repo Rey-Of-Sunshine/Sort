@@ -9,6 +9,7 @@ def _sort1(a): #метод пузырька
                 pr+=1
     return a
 
+
 def _sort2(a): #метод выбором
     global sr
     global pr
@@ -21,6 +22,7 @@ def _sort2(a): #метод выбором
                 pr+=1
         a[i], a[sm] = a[sm], a[i]
     return a
+
 
 def _sort3(a): #метод вставок
     global sr
@@ -36,6 +38,7 @@ def _sort3(a): #метод вставок
             j = j - 1
         a[j + 1] = t
     return a
+
 
 def _sort4(a): #метод Шелла
     global sr
@@ -58,6 +61,7 @@ def _sort4(a): #метод Шелла
         k -= 1
         r = 2**k -1
     return a
+
 
 def part(a, men, bol): #вспомогательная функция для быстрой сортировки
     global sr
