@@ -89,6 +89,7 @@ def quick_sort(it, men, bol): #вспомогательная функция д�
 def _sort5(a): #метод быстрой сортировки
     quick_sort(a, 0, len(a) - 1)
 
+
 from random import shuffle
 import math
 
