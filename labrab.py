@@ -1,4 +1,4 @@
-def _sort1(a): #метод пузырька
+def _sort1(a): #Метод пузырька
     global sr
     global pr
     for i in range(len(a)-1):
@@ -10,7 +10,7 @@ def _sort1(a): #метод пузырька
     return a
 
 
-def _sort2(a): #метод выбором
+def _sort2(a): #Метод выбором
     global sr
     global pr
     for i in range(len(a) - 1):
@@ -24,7 +24,7 @@ def _sort2(a): #метод выбором
     return a
 
 
-def _sort3(a): #метод вставок
+def _sort3(a): #Метод вставок
     global sr
     global pr
     for i in range(1, len(a)):
@@ -40,7 +40,7 @@ def _sort3(a): #метод вставок
     return a
 
 
-def _sort4(a): #метод Шелла
+def _sort4(a): #Метод Шелла
     global sr
     global pr
     n = len(a)
@@ -90,7 +90,7 @@ def quick_sort(it, men, bol): #вспомогательная функция д�
         quick_sort(it, men, spl)
         quick_sort (it, spl + 1, bol)
 
-def _sort5(a): #метод быстрой сортировки
+def _sort5(a): #Метод быстрой сортировки
     quick_sort(a, 0, len(a) - 1)
 
 
