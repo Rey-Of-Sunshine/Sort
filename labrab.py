@@ -1,4 +1,4 @@
-def _sort1(a):
+def _sort1(a): #метод пузырька
     global sr
     global pr
     for i in range(len(a)-1):
@@ -7,10 +7,9 @@ def _sort1(a):
             if a[j] > a[j+1]:
                 a[j], a[j+1] = a[j+1], a[j]
                 pr+=1
-    print (sr, pr)
     return a
 
-def _sort2(a):
+def _sort2(a): #метод выбором
     global sr
     global pr
     for i in range(len(a) - 1):
@@ -21,10 +20,9 @@ def _sort2(a):
                 sm = j
                 pr+=1
         a[i], a[sm] = a[sm], a[i]
-    print (sr, pr)
     return a
 
-def _sort3(a):
+def _sort3(a): #метод вставок
     global sr
     global pr
     for i in range(1, len(a)):
@@ -37,11 +35,9 @@ def _sort3(a):
             pr+=1
             j = j - 1
         a[j + 1] = t
-        
-    print (sr, pr)
     return a
 
-def _sort4(a):
+def _sort4(a): #метод Шелла
     global sr
     global pr
     n = len(a)
@@ -61,16 +57,14 @@ def _sort4(a):
             
         k -= 1
         r = 2**k -1
-    print (sr, pr)
     return a
 
-def part(a, men, bol):
+def part(a, men, bol): #вспомогательная функция для быстрой сортировки
     global sr
     global pr
     p = a[(men + bol) // 2]
     i = men - 1
     j = bol + 1
-    sr, pr = 0, 0
     while True:
         i += 1
         while a[i] < p:
@@ -86,41 +80,51 @@ def part(a, men, bol):
             return j
         a[i], a[j] = a[j], a[i]
 
-def quick_sort(it, men, bol):
+def quick_sort(it, men, bol): #вспомогательная функция для быстрой сортировки
     if (men < bol):
         spl = part(it, men, bol)
         quick_sort(it, men, spl)
-        quick_sort(it, spl + 1, bol)
+        quick_sort (it, spl + 1, bol)
 
-def _sort5(a):
+def _sort5(a): #метод быстрой сортировки
     quick_sort(a, 0, len(a) - 1)
-    print (sr, pr)
 
 from random import shuffle
 import math
 
 n=[10, 100, 1000]
-k=int(input())-1
+k=int(input('Сколько элементов в списке? Если 10 эл. введите 1, 100 - 2, 1000 - 3 '))-1
 
-a = [i  for i in range(n[k], 0, -1)] 
-print (*a)
+a = [i  for i in range(n[k], 0, -1)] #полностью не отсортированный список
+#print (*a)
 
-sr = 0
-pr =0
+sr, pr = 0, 0
 
-#r=tuple(a)
-#_sort1(a)
-#a=list(r)
-#_sort2(a)
-#a=list(r)
-#_sort3(a)
-#a=list(r)
-#_sort4(a)
-#a=list(r)
+r=tuple(a)
+
+print ('Полностью не отсортированный список')
+_sort1(a)
+print ('Метод пузырька: сравнений: ', sr, ' перестановок: ', pr)
+a=list(r)
+sr, pr = 0, 0
+_sort2(a)
+print ('Метод выбором: сравнений: ', sr, ' перестановок: ', pr)
+a=list(r)
+sr, pr = 0, 0
+_sort3(a)
+print ('Метод вставок: сравнений: ', sr, ' перестановок: ', pr)
+a=list(r)
+sr, pr = 0, 0
+_sort4(a)
+print ('Метод Шелла: сравнений: ', sr, ' перестановок: ', pr)
+a=list(r)
+sr, pr = 0, 0
 _sort5(a)
-print (*a)
+print ('Метод быстрой сортировки: сравнений: ', sr, ' перестановок: ', pr)
+print ()
 
-b = [i+1  for i in range(n[k])]
+
+b = [i+1  for i in range(n[k])] #частично отсортированный список
 b2=[]
 for j in range(n[k]//2):
     b2.append(b[j])
@@ -129,22 +133,42 @@ for j in range(n[k]//2):
     b[j]=b2[j]
 #print (*b)
 
-#r=tuple(b)
-#_sort1(b, sr, pr)
-#b=list(r)
-#_sort2(b, sr, pr)
-#b=list(r)
-#_sort3(b, sr, pr)
-#b=list(r)
-#_sort4(b, sr, pr)
-#b=list(r)
-#_sort5(b, sr, pr)
+r=tuple(b)
+print ('Частично отсортированный список')
+_sort1(b)
+print ('Метод пузырька: сравнений: ', sr, ' перестановок: ', pr)
+b=list(r)
+sr, pr = 0, 0
+_sort2(b)
+print ('Метод выбором: сравнений: ', sr, ' перестановок: ', pr)
+b=list(r)
+sr, pr = 0, 0
+_sort3(b)
+print ('Метод вставок: сравнений: ', sr, ' перестановок: ', pr)
+b=list(r)
+sr, pr = 0, 0
+_sort4(b)
+print ('Метод Шелла: сравнений: ', sr, ' перестановок: ', pr)
+b=list(r)
+sr, pr = 0, 0
+_sort5(b)
+print ('Метод быстрой сортировки: сравнений: ', sr, ' перестановок: ', pr)
+print ()
 
-c = [i+1  for i in range(n[k])]
+c = [i+1  for i in range(n[k])] #полностью отсортированный список
 #print (*c)
-
-#_sort1(c, sr, pr)
-#_sort2(c, sr, pr)
-#_sort3(c, sr, pr)
-#_sort4(c, sr, pr)
-#_sort5(c, sr, pr)
+print ('Полностью отсортированный список')
+_sort1(c)
+print ('Метод пузырька: сравнений: ', sr, ' перестановок: ', pr)
+sr, pr = 0, 0
+_sort2(c)
+print ('Метод выбором: сравнений: ', sr, ' перестановок: ', pr)
+sr, pr = 0, 0
+_sort3(c)
+print ('Метод вставок: сравнений: ', sr, ' перестановок: ', pr)
+sr, pr = 0, 0
+_sort4(c)
+print ('Метод Шелла: сравнений: ', sr, ' перестановок: ', pr)
+sr, pr = 0, 0
+_sort5(c)
+print ('Метод быстрой сортировки: сравнений: ', sr, ' перестановок: ', pr)
